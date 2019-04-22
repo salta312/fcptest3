@@ -111,7 +111,7 @@ public class UserRoleTest {
 		
 	}
 	
-	// @Test
+	@Test
 	public void testUserRoles() throws SystemException {
 		SecurityService securityService = new SecurityService();
 		
@@ -133,19 +133,19 @@ public class UserRoleTest {
 		
 		User user1 = new User();
 		user1.setUserName(USER1_NAME);
-		user1.setUserName(USER1_PWD);
+		user1.setPassword(USER1_PWD);
 		user1.addRole(role1);
 		securityService.saveUser(session, user1);
 		
 		User user2 = new User();
 		user2.setUserName(USER2_NAME);
-		user2.setUserName(USER2_PWD);
+		user2.setPassword(USER2_PWD);
 		user2.addRole(role2);
 		securityService.saveUser(session, user2);
 		
 		User user3 = new User();
 		user3.setUserName(USER3_NAME);
-		user3.setUserName(USER3_PWD);
+		user3.setPassword(USER3_PWD);
 		user3.addRole(role1);
 		user3.addRole(role2);
 		user3.addRole(role3);
@@ -164,6 +164,11 @@ public class UserRoleTest {
 		assertEquals(1, roleList.size()); 
 		assertTrue(roleList.contains(role1));
 		
+		// test hasRole for user1
+		assertTrue(user.hasRole(role1));
+		assertTrue(!user.hasRole(role2));
+		assertTrue(!user.hasRole(role3));
+		
 		// test user2 roles
 		user = securityService.userFind(session, user2.getId());
 		assertTrue(user != null);
@@ -174,11 +179,16 @@ public class UserRoleTest {
 		assertEquals(1, roleList.size()); 
 		assertTrue(roleList.contains(role2));
 		
+		// test hasRole for user2
+		assertTrue(!user.hasRole(role1));
+		assertTrue(user.hasRole(role2));
+		assertTrue(!user.hasRole(role3));
+		
 		
 		// test user3 roles
-		user = securityService.userFind(session, user1.getId());
+		user = securityService.userFind(session, user3.getId());
 		assertTrue(user != null);
-		assertEquals(USER1_NAME, user.getUserName());
+		assertEquals(USER3_NAME, user.getUserName());
 		
 		roleList = user.getRoles();
 		assertTrue(roleList != null);
@@ -186,6 +196,14 @@ public class UserRoleTest {
 		assertTrue(roleList.contains(role1));
 		assertTrue(roleList.contains(role2));
 		assertTrue(roleList.contains(role3));
+		
+		
+		// test hasRole for user3
+		assertTrue(user.hasRole(role1));
+		assertTrue(user.hasRole(role2));
+		assertTrue(user.hasRole(role3));
+		
+		
 		
 		
 		

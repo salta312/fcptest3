@@ -26,9 +26,10 @@ public class User {
 	}
 	
 	public User(User sourceUser) {
-		id = sourceUser.getId();
-		userName = sourceUser.getUserName();
-		password = sourceUser.getPassword();
+		id = sourceUser.id;
+		userName = sourceUser.userName;
+		password = sourceUser.password;
+		roles = sourceUser.roles;
 	}
 	
 	/**
