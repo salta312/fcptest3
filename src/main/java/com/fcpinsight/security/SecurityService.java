@@ -58,21 +58,5 @@ public final class SecurityService {
 		return session.getDb().userList();
 	}
 	
-	/*
-	public void saveRole(Session session, Role role) throws SystemException {
-		if (session == null) throw new InvalidSessionException("Session cannot be null");
-
-		session.getDb().roleSave(role);;
-	}
-	
-	public Role roleFind(Session session, UUID roleId) throws SystemException {
-		return session.getDb().roleFind(roleId);
-	}
-	
-	public List<Role> roleList(Session session) throws SystemException {
-		return session.getDb().roleList();
-	}
-	*/
-	
 
 }

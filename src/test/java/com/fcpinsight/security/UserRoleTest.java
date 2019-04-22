@@ -75,35 +75,6 @@ public class UserRoleTest {
 		
 	}
 
-	/*
-	@Test
-	public void testRoleReadWrite() throws SystemException {
-		SecurityService securityService = new SecurityService();
-		
-		Session session = securityService.authenticate("admin", "password");
-		assertTrue(session != null);
-		
-		Role role1 = createRole(session, ROLE1_NAME);
-		Role role2 = createRole(session, ROLE2_NAME);
-		Role role3 = createRole(session, ROLE3_NAME);
-		
-		List<Role> roleList = securityService.roleList(session);
-		assertEquals(3, roleList.size()); // three new plus the default roles
-		
-		Role role = securityService.roleFind(session, role1.getId());
-		assertTrue(role != null);
-		assertEquals(ROLE1_NAME, role.getName());
-		
-		role = securityService.roleFind(session, role2.getId());
-		assertTrue(role != null);
-		assertEquals(ROLE2_NAME, role.getName());
-		
-		role = securityService.roleFind(session, role3.getId());
-		assertTrue(role != null);
-		assertEquals(ROLE3_NAME, role.getName());
-		
-	}
-	*/ 
 	@Test
 	public void testUserRoles() throws SystemException {
 		SecurityService securityService = new SecurityService();
