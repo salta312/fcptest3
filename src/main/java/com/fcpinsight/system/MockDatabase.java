@@ -23,7 +23,7 @@ import com.fcpinsight.security.User;
 
 public class MockDatabase {
 	Map<UUID, User> users = new HashMap<UUID, User>();
-	Map<UUID, Role> roles = new HashMap<UUID, Role>();
+	// Map<UUID, Role> roles = new HashMap<UUID, Role>();
 	Map<UUID, Customer> customers = new HashMap<UUID, Customer>();
 	Map<UUID, CustomerAccessControl> customerAccessControls = new HashMap<UUID, CustomerAccessControl>();
 	
@@ -42,7 +42,7 @@ public class MockDatabase {
 		if (userId == null) {
 			return null;
 		}
-		User user = users.get(userId);  
+		User user = users.get(userId);
 		return user == null ? null : new User(user); 
 	}
 	
@@ -70,9 +70,9 @@ public class MockDatabase {
 		users.remove(user.getId());  
 	}
 
+	
 	/*
 	 * Role CRUD
-	 */
 	public Role roleFind(UUID roleId) {
 		Role role = roles.get(roleId);
 		return role == null ? null : role;
@@ -101,6 +101,7 @@ public class MockDatabase {
 
 		roles.remove(role.getId());  
 	}
+	 */
 
 	
 	
@@ -143,8 +144,15 @@ public class MockDatabase {
 		return customerAccessControl == null ? null : new CustomerAccessControl(customerAccessControl);
 	}
 	
+	/*
+	 * Returns a list of customerAccessControl Records. 
+	 * Records are grouped by Organization 
+	 * 
+	 */
 	public List<CustomerAccessControl> customerAccessControlList() {
-		return customerAccessControls.values().stream().collect(Collectors.toList());
+		return customerAccessControls.values().stream()
+				.sorted((x, y) -> x.getCustomerId().compareTo(y.getCustomerId()))
+				.collect(Collectors.toList());
 	}
 	
 	public void customerAccessControlSave(CustomerAccessControl customerAccessControl) {

@@ -58,6 +58,7 @@ public final class SecurityService {
 		return session.getDb().userList();
 	}
 	
+	/*
 	public void saveRole(Session session, Role role) throws SystemException {
 		if (session == null) throw new InvalidSessionException("Session cannot be null");
 
@@ -71,7 +72,7 @@ public final class SecurityService {
 	public List<Role> roleList(Session session) throws SystemException {
 		return session.getDb().roleList();
 	}
-	
+	*/
 	
 
 }

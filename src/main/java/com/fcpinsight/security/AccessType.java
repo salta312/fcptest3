@@ -6,6 +6,6 @@
 package com.fcpinsight.security;
 
 public enum AccessType {
-	ALOWED,
-	DENIED;
+	ALLOW,
+	DENY;
 }
