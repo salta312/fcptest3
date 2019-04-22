@@ -72,40 +72,6 @@ public class MockDatabase {
 
 	
 	/*
-	 * Role CRUD
-	public Role roleFind(UUID roleId) {
-		Role role = roles.get(roleId);
-		return role == null ? null : role;
-	}
-	
-	public Role roleFindByName(String name) {
-		if (name == null) {
-			return null;
-		}
-		Role role = roles.values().stream().filter(x -> name.equals(x.getName())).findFirst().get();  
-		return role == null ? null : role;
-	}
-	
-	public List<Role> roleList() {
-		return roles.values().stream().collect(Collectors.toList());
-	}
-	
-	public void roleSave(Role role) {
-		if (role == null) throw new RuntimeException("cannot update null role");
-
-		roles.put(role.getId(), role);  
-	}
-	
-	public void roleDelete(Role role) {
-		if (role == null) throw new RuntimeException("cannot remove null role");
-
-		roles.remove(role.getId());  
-	}
-	 */
-
-	
-	
-	/*
 	 * Customer CRUD
 	 */
 	public Customer customerFind(UUID customerId) {
