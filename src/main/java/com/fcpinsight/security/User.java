@@ -26,9 +26,10 @@ public class User {
 	}
 	
 	public User(User sourceUser) {
-		id = sourceUser.getId();
-		userName = sourceUser.getUserName();
-		password = sourceUser.getPassword();
+		id = sourceUser.id;
+		userName = sourceUser.userName;
+		password = sourceUser.password;
+		roles = sourceUser.roles;
 	}
 	
 	/**
@@ -46,9 +47,9 @@ public class User {
 	 * @return
 	 */
 	public void addRole(Role role) {
-		assert role != null;
+		if (role == null) throw new RuntimeException("cannot add null role");
 		
-		if (!this.hasRole(role)) {
+		if (!this.hasRole(role.getId())) {
 			roles.add(role);
 		}
 	}
@@ -58,10 +59,10 @@ public class User {
 	 * @param user
 	 * @return
 	 */
-	public boolean hasRole(Role role) {
-		assert role != null;
+	public boolean hasRole(UUID roleId) {
+		if (roleId == null) throw new RuntimeException("cannot have null roldeId");
 		
-		return roles.stream().anyMatch(x -> role.getId().equals(x.getId()));
+		return roles.stream().anyMatch(x -> roleId.equals(x.getId()));
 	}
 
 	public UUID getId() {

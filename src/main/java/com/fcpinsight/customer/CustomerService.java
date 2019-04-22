@@ -6,9 +6,9 @@
 package com.fcpinsight.customer;
 
 import com.fcpinsight.system.SystemException;
+
 import java.util.List;
 import java.util.UUID;
-
 import com.fcpinsight.security.Session;
 
 /**
