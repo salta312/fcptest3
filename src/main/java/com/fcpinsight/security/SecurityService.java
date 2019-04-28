@@ -47,7 +47,7 @@ public final class SecurityService {
 	public void saveUser(Session session, User user) throws SystemException {
 		if (session == null) throw new InvalidSessionException("Session cannot be null");
 
-		session.getDb().userSave(user);;
+		session.getDb().userSave(user);
 	}
 	
 	public User userFind(Session session, UUID userId) throws SystemException {
